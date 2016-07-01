@@ -1,0 +1,17 @@
+<div class="main">
+  <div class="container">
+    <h1>Schedule</h1>
+    <p>
+
+<!-- only can edit the schedule if an editor -->
+<% if current_user && current_user.editor? %> 
+  <p class="recipe-edit"> 
+    <%= link_to "Edit/Upload Schedule", upload_path %> 
+  </p> 
+<% end %>
+
+
+    </p>
+
+  </div>
+</div>

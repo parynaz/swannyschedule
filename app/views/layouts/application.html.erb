@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Swannyfinal</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  	       <div class="nav pull-right">
+     
+     <% if current_user && current_user.editor? %> 
+          <ul> 
+            <li><%= current_user.email %></li> 
+
+            <li><%= link_to "Schedule", schedule_path %></li> 
+
+            <li><%= link_to "Upload Schedule", upload_path %></li> 
+
+            <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
+          </ul> 
+    <% elsif current_user && current_user.admin? %> 
+          <ul> 
+            <li><%= current_user.email %></li> 
+
+            <li><%= link_to "Schedule", schedule_path %></li> 
+
+            <li><%= link_to "Upload Schedule", upload_path %></li> 
+
+            <li><%= link_to "See Users", userlist_path %></li> 
+
+            <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
+
+          </ul> 
+
+    <% elsif current_user %> 
+          <ul> 
+            <li><%= current_user.email %></li> 
+
+            <li><%= link_to "Schedule", schedule_path %></li> 
+
+            <li><%= link_to "Log out", logout_path, method: "delete" %></li> 
+
+          </ul> 
+
+      <% else %> 
+          <ul> 
+            <li><%= link_to "Login", 'login' %></a></li> 
+            <li><%= link_to "Signup", 'signup' %></a></li> 
+          </ul> 
+
+
+
+          <% end %>
+          
+        </div>
+      </div>
+    </div>
+
+    
+    
+    <%= yield %>
+  </body>
+</html>
